@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title> My feelings</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#1f2933,#0f172a);
+    color:#fff;
+    height:100vh;
+    overflow:hidden;
+}
+
+/* HEART SHOWER */
+.heart{
+    position:fixed;
+    top:-10px;
+    width:12px;
+    height:12px;
+    background:#ff4d6d;
+    transform:rotate(45deg);
+    animation:fall linear infinite;
+    z-index:0;
+}
+.heart::before,.heart::after{
+    content:'';
+    width:12px;
+    height:12px;
+    background:#ff4d6d;
+    border-radius:50%;
+    position:absolute;
+}
+.heart::before{top:-6px;left:0;}
+.heart::after{left:-6px;top:0;}
+
+@keyframes fall{
+    to{
+        transform:translateY(110vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+/* SLIDES */
+.slide{
+    display:none;
+    height:100vh;
+    width:100%;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
+    padding:20px;
+    position:relative;
+    z-index:2;
+    animation:fade 0.7s ease;
+}
+.slide.active{display:flex;}
+
+@keyframes fade{
+    from{opacity:0;transform:scale(0.9);}
+    to{opacity:1;transform:scale(1);}
+}
+
+h1{font-size:3rem;margin-bottom:15px;}
+p{font-size:1.2rem;opacity:0.9;}
+
+.next{
+    margin-top:40px;
+    padding:12px 35px;
+    border:none;
+    border-radius:30px;
+    background:linear-gradient(45deg,#38bdf8,#6366f1);
+    color:#fff;
+    font-size:1.1rem;
+    cursor:pointer;
+    transition:0.3s;
+}
+.next:hover{transform:scale(1.1);}
+
+.cursive{
+    font-family:'Brush Script MT', cursive;
+    font-size:3.2rem;
+}
+
+.btns{
+    display:flex;
+    gap:25px;
+    margin-top:30px;
+}
+.btn{
+    padding:14px 45px;
+    border:none;
+    border-radius:50px;
+    font-size:1.1rem;
+    cursor:pointer;
+    transition:0.3s;
+}
+.btn:hover{transform:scale(1.15);}
+.yes{background:linear-gradient(45deg,#22c55e,#16a34a);}
+.no{background:linear-gradient(45deg,#ef4444,#b91c1c);}
+
+.explode{
+    font-size:4rem;
+    font-weight:700;
+    opacity:0;
+    transform:scale(0.3);
+    transition:1s ease;
+}
+.show{opacity:1;transform:scale(1);}
+
+.shayri{
+    margin-top:25px;
+    font-size:1.2rem;
+    line-height:1.6;
+    opacity:0.9;
+}
+
+/* IMAGE BOX */
+.img-box{
+    width:140px;
+    height:140px;
+    border-radius:15px;
+    overflow:hidden;
+    margin-bottom:15px;
+    box-shadow:0 0 25px rgba(255,255,255,0.25);
+}
+.img-box img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* MUSIC BUTTON */
+.music-btn{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    padding:10px 18px;
+    border-radius:30px;
+    border:none;
+    background:#111;
+    color:#fff;
+    cursor:pointer;
+    z-index:5;
+}
+
+.credit{
+    position:fixed;
+    top:15px;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:0.9rem;
+    opacity:0.7;
+    z-index:5;
+}
+</style>
+</head>
+
+<body>
+
+
+
+<!-- MUSIC -->
+<audio id="bgMusic" loop>
+    <!-- apna music yaha daal -->
+    <source src="Preet Re Dhadak 2 128 Kbps.mp3" type="audio/mpeg">
+</audio>
+<button class="music-btn" onclick="toggleMusic()">🎵 Music</button>
+
+<!-- Slide 1 -->
+<div class="slide active">
+    <div class="img-box">
+        <!-- apni image ka path -->
+        <img src="cat.jpg.png">
+    </div>
+    <h1>Hey ❤️</h1>
+    <p>I Made something special for you </p>
+    <button class="next" onclick="nextSlide()">Next 💫</button>
+</div>
+
+<!-- Slide 2 -->
+<div class="slide">
+    <h1> Thoughts✨</h1>
+    <p>I don't know when it happened but </br>
+      You became a very important part of my life
+    </p>
+    <button class="next" onclick="nextSlide()">Next 💫</button>
+</div>
+
+<!-- Slide 3 -->
+<div class="slide">
+    <h1> For you ✨</h1>
+    <p>You are genuinely kind and I admire you so much.</br>
+      You stay yourself and that makes you special.</br>
+      Your honesty feels softly beautiful.</br>
+      I notice the little things you do.</br>
+      Your presence feels warm and peaceful.</br>
+      You deserve care, respect and gentle love.</br>
+      I am really happy I met you.</br>
+      Even when I stay quiet, I still care.</br>
+      You make my world feel a little brighter.</br>
+      Thank you for being you.</br>
+      Stay safe, stay soft, stay happy 🌷
+      </p>
+    <button class="next" onclick="nextSlide()">One last thing ❤️</button>
+</div>
+
+<!-- Slide 4 -->
+<div class="slide">
+    <h1 class="cursive">Click the heart below</h1>
+    <button class="next" onclick="nextSlide()">❤️</button heart>
+</div>
+
+
+<!-- Slide 5 -->
+<div class="slide">
+    <h1 class="cursive">Will you be mine?</h1>
+    <h2 class="bold"></h2>“Tumse baat na ho toh dil bechain sa lagta hai,</br>
+         Tumhare bina har pal kuch adhoora sa lagta hai.</br>
+         Aaj himmat karke dil ki baat keh raha hoon,</br>
+         Kya tum meri zindagi ka hamesha ka hissa banogi?”
+</p>
+    <div class="btns">
+        <button class="btn yes" onclick="yesClick()">Yes 💖</button>
+        <button class="btn no" onclick="noClick()">No 💔</button>
+    </div>
+    <p id="warn" style="margin-top:20px;color:#fca5a5;display:none;">
+        Soch lo… mere jaisa masoom, caring aur loving insan dubara nahi milega 🙂
+    </p>
+</div>
+
+<!-- Result -->
+<div class="slide" id="result">
+    <div class="explode" id="bigText"></div>
+    <div class="shayri" id="shayri"></div>
+</div>
+
+<script>
+/* HEARTS */
+for(let i=0;i<35;i++){
+    let h=document.createElement("div");
+    h.className="heart";
+    h.style.left=Math.random()*100+"vw";
+    h.style.animationDuration=(Math.random()*3+4)+"s";
+    document.body.appendChild(h);
+}
+
+/* SLIDES */
+let slides=document.querySelectorAll(".slide");
+let index=0,noCount=0;
+
+function nextSlide(){
+    slides[index].classList.remove("active");
+    index++;
+    slides[index].classList.add("active");
+}
+
+function yesClick(){
+    showResult(
+        "I LOVE YOU ❤️",
+        "Tumhari ek haan ne meri duniya badal di,\nDil ki har dua tum par aa kar sambhal di.\nAb saath ho tum toh har raasta haseen hai."
+    );
+}
+
+function noClick(){
+    noCount++;
+    if(noCount===1){
+        document.getElementById("warn").style.display="block";
+    }else{
+        showResult(
+            "SORRY 💔",
+            "Dil todna tumhara iraada na tha shayad,\nPar toot kar bhi humne shikayat na ki.\nMohabbat aaj bhi tumse hai,\nBas ab dard ke saath jeena seekh liya."
+        );
+    }
+}
+
+function showResult(text,shayri){
+    slides[index].classList.remove("active");
+    document.body.style.background="#000";
+    let r=document.getElementById("result");
+    r.classList.add("active");
+    document.getElementById("bigText").innerText=text;
+    document.getElementById("shayri").innerText=shayri;
+    setTimeout(()=>bigText.classList.add("show"),200);
+}
+
+/* MUSIC */
+function toggleMusic(){
+    let m=document.getElementById("bgMusic");
+    m.paused ? m.play() : m.pause();
+}
+</script>
+
+</body>
+</html>
